@@ -9,23 +9,23 @@
 #define TREE_BOTTOM_X 45
 
 
-//ÄÜ¼Ö Å©±â ¹Ø Å¸ÀÌÆ² ÀÌ¸§ ¼³Á¤ 
+//ì½˜ì†” í¬ê¸° ë°‘ íƒ€ì´í‹€ ì´ë¦„ ì„¤ì • 
 void setconsoleview()
 {
 	system("mode con:cols=100 lines=25"); //col=x lines=y
 	system("Google dinosaurs game");	
 }
 
-//À§Ä¡ ÀÌµ¿ ÇÔ¼ö 
+//ìœ„ì¹˜ ì´ë™ í•¨ìˆ˜ 
 void gotoxy(int x, int y)
 {
-	COORD a; //x,y°ª ÀúÀå 
+	COORD a; //x,yê°’ ì €ìž¥ 
 	a.X=2*x;
 	a.Y=y;
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),a); //Ç¥ÁØÄÜ¼ÖÃâ·ÂÀÇ ÇÚµéÀ» ¹ÝÈ¯ÇØÁÜ. GetStdHandle(STD_OUTPUT_HANDLE) 
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),a); //í‘œì¤€ì½˜ì†”ì¶œë ¥ì˜ í•¸ë“¤ì„ ë°˜í™˜í•´ì¤Œ. GetStdHandle(STD_OUTPUT_HANDLE) 
 }
 
-//ÀÔ·ÂµÈ Å° ¹ÝÈ¯ÇÏ´Â ÇÔ¼ö 
+//ìž…ë ¥ëœ í‚¤ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜ 
 int clickkey()
 {
 	if(_kbhit()!=0)
@@ -67,7 +67,7 @@ void DrawDino(int dinoY)
 
 void DrawTree(int treex)
 {
-	gotoxy(treex, TREE_BOTTOM_Y);
+    gotoxy(treex, TREE_BOTTOM_Y);
     printf("$$$$");
     gotoxy(treex, TREE_BOTTOM_Y + 1);
     printf(" $$ ");
@@ -82,53 +82,53 @@ void DrawTree(int treex)
 
 int main()
 {
-	setconsoleview();
-	bool isJumping = false; //Ã³À½¿¡´Â ¾È¶Ù°í ÀÖÀ¸´Ï  false 
-    bool isBottom = true;   //¶¥¿¡ ÀÖÀ¸´Ï true 
-    const int gravity = 3; //¶Ù´Â °£°Ý 
+    setconsoleview();
+    bool isJumping = false; //ì²˜ìŒì—ëŠ” ì•ˆë›°ê³  ìžˆìœ¼ë‹ˆ  false 
+    bool isBottom = true;   //ë•…ì— ìžˆìœ¼ë‹ˆ true 
+    const int gravity = 3; //ë›°ëŠ” ê°„ê²© 
  
     int dinoY = DINO_BOTTOM_Y; //12
     int treeX = TREE_BOTTOM_X; //45
  
     while (true)
     {
-        //zÅ°°¡ ´­¸®°Å³ª  °ø·æÀÌ ¹Ù´Ú¿¡ ÀÖÁö ¾ÊÀ»½Ã Á¡ÇÁ°¡´É
+        //zí‚¤ê°€ ëˆŒë¦¬ê±°ë‚˜  ê³µë£¡ì´ ë°”ë‹¥ì— ìžˆì§€ ì•Šì„ì‹œ ì í”„ê°€ëŠ¥
         if (clickkey() == 'z' && isBottom)
         {
-            isJumping = true; //¶Ù°í³ª¼­ true·Î ¹Ù²Ù°í ¶¥¿¡ ¾øÀ¸´Ï false·Î ¹Ù²Ù±â 
+            isJumping = true; //ë›°ê³ ë‚˜ì„œ trueë¡œ ë°”ê¾¸ê³  ë•…ì— ì—†ìœ¼ë‹ˆ falseë¡œ ë°”ê¾¸ê¸° 
             isBottom = false;
         }
         
         if (isJumping)
         {
-            dinoY -= gravity;  //Á¡ÇÁÁßÀÏ¶§ 3¾¿ »­  
+            dinoY -= gravity;  //ì í”„ì¤‘ì¼ë•Œ 3ì”© ëºŒ  
         }
         else
         {
-            dinoY += gravity; //Á¡ÇÁ³¡ 3¾¿ ´õÇÔ 
+            dinoY += gravity; //ì í”„ë 3ì”© ë”í•¨ 
         }
  
-        if (dinoY >= DINO_BOTTOM_Y) //12 = ¶¥ 
+        if (dinoY >= DINO_BOTTOM_Y) //12 = ë•… 
         {
-            dinoY = DINO_BOTTOM_Y; //¶¥ µµÂø 
+            dinoY = DINO_BOTTOM_Y; //ë•… ë„ì°© 
             isBottom = true;  
         }
  
-        if (dinoY <= 3) //3º¸´Ù ÀÛ°Å³ª °°À¸¸é  
+        if (dinoY <= 3) //3ë³´ë‹¤ ìž‘ê±°ë‚˜ ê°™ìœ¼ë©´  
         {
-            isJumping = false; //Á¡ÇÁ ³¡ 
+            isJumping = false; //ì í”„ ë 
         }
  
-        treeX -= 2; //³ª¹«°¡ ¿À´Â ¼Óµµ Á¤ÇÏ±â 
+        treeX -= 2; //ë‚˜ë¬´ê°€ ì˜¤ëŠ” ì†ë„ ì •í•˜ê¸° 
         if (treeX <= 0)
         {
-            treeX = TREE_BOTTOM_X; //³ª¹« ´Ù½Ã À§Ä¡¿¡¼­ Ãâ·Â 
+            treeX = TREE_BOTTOM_X; //ë‚˜ë¬´ ë‹¤ì‹œ ìœ„ì¹˜ì—ì„œ ì¶œë ¥ 
         }
  
         DrawDino(dinoY);    
         DrawTree(treeX);  
-        Sleep(80); //¼Óµµ Á¤ÇÏ±â 
-        system("cls");    //ÇÑ¹ø ³¡³¯¶§¸¶´Ù Àü¿¡²¨ Áö¿ì±â 
+        Sleep(80); //ì†ë„ ì •í•˜ê¸° 
+        system("cls");    //í•œë²ˆ ëë‚ ë•Œë§ˆë‹¤ ì „ì—êº¼ ì§€ìš°ê¸° 
     }
     system("pause");
     return 0;
