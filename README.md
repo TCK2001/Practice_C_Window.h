@@ -1,4 +1,5 @@
 ## Practice_C_Window.h
+## Google dinosaur 1.0 
 ------
 + 출처:https://blockdmask.tistory.com/344
 ------
@@ -8,4 +9,4 @@
 #include <Windows.h> //window console
 ```
 + New imformation +1 
-+ 옆에 command 다 써서 알아보기 쉬움.
++ Today i learned about (Window.h) and How to use c to created console game.
